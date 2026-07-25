@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Den Garcia | A. Garcia Family</title>
+    <meta name="description" content="Den Garcia's presentation." />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        montserrat: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        brandDark: '#0b0f19',
+                        brandCard: '#111827',
+                        brandRed: '#e11d48',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Smooth Scroll & Section Reveal Transitions */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-brandDark text-gray-100 font-sans antialiased selection:bg-white selection:text-black overflow-x-hidden relative">
+
+    <!-- Fullscreen Three.js Background Canvas (Scroll Interactive) -->
+    <div id="scroll-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-45"></div>
+
+    <!-- Back to Main Navigation -->
+    <header class="sticky top-0 z-50 bg-brandDark/80 backdrop-blur-xl border-b border-gray-800/40 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+            <a href="index.html"
+                class="font-montserrat text-sm font-[600] text-gray-400 hover:text-white transition-colors duration-300 flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Back to Family Page
+            </a>
+            <div class="font-montserrat text-lg font-[800] uppercase tracking-wider text-white">
+                Den <span class="text-gray-500">Garcia</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. Hero Section -->
+    <section
+        class="relative z-10 py-32 md:py-44 bg-gradient-to-b from-brandDark/40 via-brandDark/60 to-transparent overflow-hidden reveal-on-scroll">
+        <div class="relative z-10 max-w-3xl mx-auto px-6 text-center">
+            <!-- Round Image Placeholder -->
+            <div
+                class="w-44 h-44 rounded-full bg-gray-900/80 border-4 border-gray-700/60 mx-auto flex items-center justify-center text-gray-600 shadow-2xl mb-10 overflow-hidden backdrop-blur-md">
+                <img
+                    src="https://ramvl.wordpress.com/wp-content/uploads/2026/07/image_editor_output_image-522697249-17830228669444881848453239249025.jpg" alt="Den Garcia" />
+            </div>
+            <h1
+                class="font-montserrat text-2xl md:text-3xl font-[700] text-gray-100 tracking-tight max-w-xl mx-auto leading-relaxed">
+                Unprofessional Thoughts. Professional Life. Personal Life Lessons. Occasional Existential Dread. 🤣
+            </h1>
+        </div>
+    </section>
+
+    <!-- Soft Transition Divider -->
+    <div class="relative z-10 max-w-4xl mx-auto px-6 pointer-events-none">
+        <div class="h-px bg-gradient-to-r from-transparent via-gray-800/80 to-transparent"></div>
+    </div>
+
+    <!-- 2. Whatever Section -->
+    <section class="relative z-10 py-28 md:py-36 overflow-hidden reveal-on-scroll">
+        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+            <div class="bg-brandCard/60 backdrop-blur-md border border-gray-800/60 rounded-2xl p-10 md:p-16 shadow-2xl shadow-indigo-950/10">
+                <p class="font-montserrat text-lg md:text-xl text-gray-200 mb-8 leading-relaxed">
+                    Hi, I’m <span class="text-white font-[700] underline decoration-gray-600">DEN</span>. DENo.
+                    DENosaur.
+                    Not InDENial. Not a DENtist. Maybe adDENd? Wifeys BurDEN but also her personal EDEN. 😎
+                </p>
+                <div class="w-16 h-[2px] bg-gradient-to-r from-gray-700 via-gray-500 to-gray-700 mx-auto mb-8 rounded-full"></div>
+                <p class="text-gray-400 text-lg font-[500]">
+                    A frustrated learner by day. A website developer by night.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Soft Transition Divider -->
+    <div class="relative z-10 max-w-4xl mx-auto px-6 pointer-events-none">
+        <div class="h-px bg-gradient-to-r from-transparent via-gray-800/80 to-transparent"></div>
+    </div>
+
+    <!-- 3. Busy Buddy Section -->
+    <section class="relative z-10 py-28 md:py-36 bg-gradient-to-b from-transparent via-brandCard/40 to-transparent reveal-on-scroll">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="mb-16 text-center md:text-left">
+                <h2 class="font-montserrat text-3xl font-[700] text-gray-100 mb-3">Busy Buddy</h2>
+                <p class="text-gray-400">What I'm currently working with:</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Project 1 -->
+                <div
+                    class="bg-brandDark/70 backdrop-blur-md border border-gray-800/70 rounded-xl p-8 flex flex-col justify-between hover:border-gray-600/80 transition-all duration-300 shadow-xl hover:-translate-y-1">
+                    <div>
+                        <span class="text-xs font-[600] tracking-widest text-gray-500 uppercase font-montserrat">Web
+                            App</span>
+                        <h3 class="font-montserrat font-[700] text-lg text-white mt-1 mb-4 break-all">
+                            trabahong-ibayo.ramvl.art</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            Aggregated overseas works with transparency and ease.
+                        </p>
+                    </div>
+                    <a href="https://trabahong-ibayo.ramvl.art/" target="_blank"
+                        class="mt-8 text-xs font-[600] text-gray-300 hover:text-white flex items-center gap-1 group">
+                        Visit Project
+                        <svg class="w-3 h-3 transform group-hover:translate-x-1 transition-transform" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Project 2 -->
+                <div
+                    class="bg-brandDark/70 backdrop-blur-md border border-gray-800/70 rounded-xl p-8 flex flex-col justify-between hover:border-gray-600/80 transition-all duration-300 shadow-xl hover:-translate-y-1">
+                    <div>
+                        <span
+                            class="text-xs font-[600] tracking-widest text-gray-500 uppercase font-montserrat">System</span>
+                        <h3 class="font-montserrat font-[700] text-lg text-white mt-1 mb-4">Sentimento</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            A system that gathers user interactions and analyzes them to generate accurate testimonials,
+                            ads, and live notifications.
+                        </p>
+                    </div>
+                    <span class="mt-8 text-xs font-[600] text-gray-600 flex items-center gap-1 cursor-default">
+                        In Development
+                    </span>
+                </div>
+
+                <!-- Project 3 -->
+                <div
+                    class="bg-brandDark/70 backdrop-blur-md border border-gray-800/70 rounded-xl p-8 flex flex-col justify-between hover:border-gray-600/80 transition-all duration-300 shadow-xl hover:-translate-y-1">
+                    <div>
+                        <span
+                            class="text-xs font-[600] tracking-widest text-gray-500 uppercase font-montserrat">Platform</span>
+                        <h3 class="font-montserrat font-[700] text-lg text-white mt-1 mb-4">Autter</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            A web app for fiction authors focusing on providing a clean platform for story ideas
+                            organization.
+                        </p>
+                    </div>
+                    <span class="mt-8 text-xs font-[600] text-gray-600 flex items-center gap-1 cursor-default">
+                        In Development
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Soft Transition Divider -->
+    <div class="relative z-10 max-w-4xl mx-auto px-6 pointer-events-none">
+        <div class="h-px bg-gradient-to-r from-transparent via-gray-800/80 to-transparent"></div>
+    </div>
+
+    <!-- 4. Philosophical Callout Section -->
+    <section
+        class="relative z-10 py-36 md:py-48 min-h-[400px] flex items-center justify-center bg-gradient-to-b from-transparent via-[#070a12]/70 to-transparent text-center overflow-hidden reveal-on-scroll">
+        <div class="relative z-10 max-w-4xl mx-auto px-6 w-full">
+            <!-- Carousel Container -->
+            <div id="philosophical-carousel" class="relative overflow-hidden py-6">
+                <!-- Slides Track -->
+                <div id="carousel-track" class="flex transition-transform duration-700 ease-in-out">
+                    <!-- Slide 1 -->
+                    <div class="w-full flex-shrink-0 px-4">
+                        <div class="font-montserrat text-2xl md:text-3xl font-[700] tracking-wide text-gray-400">
+                            Feeling Productive? <span
+                                class="text-white font-[800] block sm:inline mt-2 sm:mt-0 ml-1">Code.</span>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="w-full flex-shrink-0 px-4">
+                        <div class="font-montserrat text-2xl md:text-3xl font-[700] tracking-wide text-gray-400">
+                            Feeling Bored? <span
+                                class="text-white font-[800] block sm:inline mt-2 sm:mt-0 ml-1">Write.</span>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="w-full flex-shrink-0 px-4">
+                        <div class="font-montserrat text-2xl md:text-3xl font-[700] tracking-wide text-gray-400">
+                            Feeling Ambitious? <span
+                                class="text-white font-[800] block sm:inline mt-2 sm:mt-0 ml-1">Design.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Soft Transition Divider -->
+    <div class="relative z-10 max-w-4xl mx-auto px-6 pointer-events-none">
+        <div class="h-px bg-gradient-to-r from-transparent via-gray-800/80 to-transparent"></div>
+    </div>
+
+    <!-- 5. Blogs Gallery Section -->
+    <section class="relative z-10 py-28 md:py-36 reveal-on-scroll">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="mb-16 text-center md:text-left">
+                <h2 class="font-montserrat text-3xl font-[700] text-gray-100 mb-3">Scratchpad Chronicles</h2>
+                <p class="text-gray-400">Occasional thoughts, technical deep-dives, and documentation logs.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Blog Gallery Item 1 -->
+                <article
+                    class="bg-brandCard/60 backdrop-blur-md border border-gray-800/70 rounded-xl overflow-hidden shadow-xl hover:border-gray-600/80 transition-all duration-300 hover:-translate-y-1 group cursor-pointer flex flex-col justify-between"
+                    onclick="window.open('https://ramvl.wordpress.com/2026/07/05/the-old-man-in-camo/', '_blank')">
+                    <div>
+                        <!-- Blog Image Box -->
+                        <div
+                            class="h-48 bg-gray-900/80 border-b border-gray-800/60 flex items-center justify-center text-gray-700 relative overflow-hidden">
+                            <img src="https://ramvl.wordpress.com/wp-content/uploads/2026/07/1783255745280.png" alt="The Old Man in Camo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                        </div>
+                        <!-- Content -->
+                        <div class="p-6 md:p-8">
+                            <h3
+                                class="font-montserrat font-[600] text-lg text-white group-hover:text-gray-300 transition-colors mb-3 leading-snug">
+                                The Old Man in Camo
+                            </h3>
+                            <p class="text-sm text-gray-400 leading-relaxed line-clamp-3">
+                                A few seconds, not even a minute and I’m already melting like a puddle of goo under the
+                                blistering heatwave. The sun’s glare blinding my unaccustomed eyes for some time. Then
+                                there he was. Silver hair, graying eyes, muscles showing signs of slow atrophy. He’s
+                                old. Staring… right into my eyes.
+                            </p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Gallery Item 2 -->
+                <article
+                    class="bg-brandCard/60 backdrop-blur-md border border-gray-800/70 rounded-xl overflow-hidden shadow-xl hover:border-gray-600/80 transition-all duration-300 hover:-translate-y-1 group cursor-pointer flex flex-col justify-between"
+                    onclick="window.open('https://ramvl.wordpress.com/2025/03/27/mysql-index-optimization-choosing-the-right-one-for-your-queries/', '_blank')">
+                    <div>
+                        <!-- Blog Image Box -->
+                        <div
+                            class="h-48 bg-gray-900/80 border-b border-gray-800/60 flex items-center justify-center text-gray-700 relative overflow-hidden">
+                            <img src="https://ramvl.wordpress.com/wp-content/uploads/2025/03/image.png" alt="MySQL Index Optimization" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                        </div>
+                        <!-- Content -->
+                        <div class="p-6 md:p-8">
+                            <h3
+                                class="font-montserrat font-[600] text-lg text-white group-hover:text-gray-300 transition-colors mb-3 leading-snug">
+                                MySQL Index Optimization
+                            </h3>
+                            <p class="text-sm text-gray-400 leading-relaxed line-clamp-3">
+                                If you’ve ever had to debug slow queries, you know the frustration of inefficient
+                                indexing. Recently, I had to revisit table implementations for a very old job search
+                                web app at my company. The main problems? Inefficient queries that took forever,
+                                querying the same data multiple times with no caching, and worst of all, heavy use of
+                                LIKE %% searches and JOIN queries that completely wrecked performance.
+                            </p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Gallery Item 3 -->
+                <article
+                    class="bg-brandCard/60 backdrop-blur-md border border-gray-800/70 rounded-xl overflow-hidden shadow-xl hover:border-gray-600/80 transition-all duration-300 hover:-translate-y-1 group cursor-pointer flex flex-col justify-between"
+                    onclick="window.open('https://ramvl.wordpress.com/2025/03/06/my-experience-with-2fa-totp-and-secure-sessions/', '_blank')">
+                    <div>
+                        <!-- Blog Image Box -->
+                        <div
+                            class="h-48 bg-gray-900/80 border-b border-gray-800/60 flex items-center justify-center text-gray-700 relative overflow-hidden">
+                            <img src="https://ramvl.wordpress.com/wp-content/uploads/2025/03/2fa-banner-mini.webp" alt="2FA TOTP Sessions" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                        </div>
+                        <!-- Content -->
+                        <div class="p-6 md:p-8">
+                            <h3
+                                class="font-montserrat font-[600] text-lg text-white group-hover:text-gray-300 transition-colors mb-3 leading-snug">
+                                My Experience with 2FA, TOTP, and Secure Sessions
+                            </h3>
+                            <p class="text-sm text-gray-400 leading-relaxed line-clamp-3">
+                                Working with authentication, 2FA (Two-Factor Authentication), TOTP (Time-Based One-Time
+                                Passwords), and session security has been an interesting challenge. Along the way, I’ve
+                                picked up some key lessons that helped me refine how I handle security.
+                            </p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Soft Transition Divider -->
+    <div class="relative z-10 max-w-4xl mx-auto px-6 pointer-events-none">
+        <div class="h-px bg-gradient-to-r from-transparent via-gray-800/80 to-transparent"></div>
+    </div>
+
+    <!-- 6. Resume Action Section -->
+    <section class="relative z-10 py-28 md:py-36 bg-gradient-to-b from-transparent via-brandCard/30 to-brandDark/80 text-center reveal-on-scroll">
+        <div class="max-w-md mx-auto px-6">
+            <h3 class="font-montserrat text-xl font-[700] text-white mb-3">Looking for the Credentials?</h3>
+            <p class="text-sm text-gray-400 mb-10 leading-relaxed">Review my professional experiences, engineering
+                parameters, and skill sets.</p>
+
+            <a href="https://ramvl.wordpress.com/wp-content/uploads/2026/07/dens-resume.pdf" target="_blank"
+                class="inline-block w-full sm:w-auto px-10 py-4 bg-white text-black hover:bg-gray-200 font-montserrat font-[700] text-sm rounded transition-colors duration-300 uppercase tracking-wider shadow-lg hover:shadow-white/10">
+                View Professional Resume
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+        class="relative z-10 bg-brandDark/90 backdrop-blur-md py-10 border-t border-gray-800/40 text-center text-xs text-gray-500">
+        <div class="max-w-6xl mx-auto px-6">
+            <p>&copy; 2026 A. Garcia Family Memorabilia. Built with gratitude.</p>
+            <p>&copy; All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Three.js Scroll-Interactive Animation Logic -->
+    <script>
+        const container = document.getElementById('scroll-canvas');
+        const scene = new THREE.Scene();
+
+        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(0, 0, 35);
+
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        container.appendChild(renderer.domElement);
+
+        // --- 1. Star & Particle Constellation Field ---
+        const particleCount = 450;
+        const particleGeo = new THREE.BufferGeometry();
+        const particlePos = new Float32Array(particleCount * 3);
+
+        for (let i = 0; i < particleCount; i++) {
+            particlePos[i * 3] = (Math.random() - 0.5) * 120;
+            particlePos[i * 3 + 1] = (Math.random() - 0.5) * 160;
+            particlePos[i * 3 + 2] = (Math.random() - 0.5) * 100;
+        }
+        particleGeo.setAttribute('position', new THREE.BufferAttribute(particlePos, 3));
+
+        const particleMat = new THREE.PointsMaterial({
+            color: 0x38bdf8,
+            size: 0.85,
+            transparent: true,
+            opacity: 0.65
+        });
+        const particleSystem = new THREE.Points(particleGeo, particleMat);
+        scene.add(particleSystem);
+
+        // --- 2. Primary Scroll Geometry: Wireframe Torus Knot ---
+        const torusGeo = new THREE.TorusKnotGeometry(7, 2, 120, 16);
+        const torusMat = new THREE.MeshBasicMaterial({
+            color: 0x6366f1,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.4
+        });
+        const torusKnot = new THREE.Mesh(torusGeo, torusMat);
+        scene.add(torusKnot);
+
+        // --- 3. Secondary Scroll Geometry: Wireframe Icosahedron ---
+        const icoGeo = new THREE.IcosahedronGeometry(4.5, 1);
+        const icoMat = new THREE.MeshBasicMaterial({
+            color: 0xe11d48,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.35
+        });
+        const icoMesh = new THREE.Mesh(icoGeo, icoMat);
+        icoMesh.position.set(-15, -20, -5);
+        scene.add(icoMesh);
+
+        // --- 4. Tertiary Scroll Geometry: Wireframe Octahedron Ring ---
+        const octGeo = new THREE.OctahedronGeometry(6, 2);
+        const octMat = new THREE.MeshBasicMaterial({
+            color: 0x38bdf8,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.3
+        });
+        const octMesh = new THREE.Mesh(octGeo, octMat);
+        octMesh.position.set(15, -50, -10);
+        scene.add(octMesh);
+
+        // --- Scroll Tracking & Interpolation ---
+        let currentScroll = window.scrollY;
+        let targetScroll = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            targetScroll = window.scrollY;
+        });
+
+        const clock = new THREE.Clock();
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            const elapsedTime = clock.getElapsedTime();
+
+            // Smooth scroll interpolation (lerp)
+            currentScroll += (targetScroll - currentScroll) * 0.08;
+
+            const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+            const progress = currentScroll / maxScroll; // 0.0 to 1.0
+
+            // Camera movement along scroll depth
+            camera.position.y = -progress * 60;
+            camera.position.x = Math.sin(progress * Math.PI * 2) * 4;
+            camera.position.z = 35 + Math.cos(progress * Math.PI) * 5;
+            camera.rotation.z = Math.sin(progress * Math.PI) * 0.15;
+
+            // Torus Knot animation reacting to scroll
+            torusKnot.position.y = -progress * 60 + Math.sin(elapsedTime * 0.5) * 1.5;
+            torusKnot.position.x = Math.cos(progress * Math.PI * 2) * 8;
+            torusKnot.rotation.x = elapsedTime * 0.2 + currentScroll * 0.003;
+            torusKnot.rotation.y = elapsedTime * 0.3 + currentScroll * 0.004;
+
+            // Secondary meshes continuous rotation & scroll response
+            icoMesh.rotation.x = elapsedTime * 0.4 + currentScroll * 0.002;
+            icoMesh.rotation.y = elapsedTime * 0.5;
+
+            octMesh.rotation.y = elapsedTime * 0.3 + currentScroll * 0.005;
+            octMesh.rotation.z = elapsedTime * 0.2;
+
+            // Particle system subtle rotation
+            particleSystem.rotation.y = elapsedTime * 0.05 + currentScroll * 0.0005;
+
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Window Resize Handler
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        });
+
+        // --- Philosophical Callout Carousel Logic (2s Interval, Clean Auto-Loop) ---
+        const track = document.getElementById('carousel-track');
+
+        let currentSlide = 0;
+        const totalSlides = 3;
+
+        function updateCarousel(index) {
+            currentSlide = (index + totalSlides) % totalSlides;
+            if (track) {
+                track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            }
+        }
+
+        setInterval(() => {
+            updateCarousel(currentSlide + 1);
+        }, 2000);
+
+        // --- Smooth Intersection Observer for Scroll-Reveal ---
+        const revealElements = document.querySelectorAll('.reveal-on-scroll');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -60px 0px',
+            threshold: 0.15
+        };
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, observerOptions);
+
+        revealElements.forEach(el => revealObserver.observe(el));
+    </script>
+</body>
+
+</html>
