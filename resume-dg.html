@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Den Garcia - Resume</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+            color: #333333;
+            background-color: #f4f4f6;
+            padding: 40px 20px;
+        }
+
+        .resume-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-radius: 4px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #111111;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .contact-info {
+            font-size: 14px;
+            color: #666666;
+            margin-bottom: 10px;
+        }
+
+        .links {
+            font-size: 14px;
+        }
+
+        .links a {
+            color: #0066cc;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #e0e0e0;
+            margin: 20px 0;
+        }
+
+        section {
+            margin-bottom: 25px;
+        }
+
+        h3 {
+            font-size: 16px;
+            color: #0055aa;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #0055aa;
+            padding-bottom: 4px;
+        }
+
+        p {
+            font-size: 14.5px;
+            color: #444444;
+            text-align: justify;
+        }
+
+        ul {
+            list-style-type: square;
+            margin-left: 20px;
+        }
+
+        li {
+            font-size: 14px;
+            color: #444444;
+            margin-bottom: 4px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 10px;
+        }
+
+        .skills-category {
+            font-size: 14px;
+        }
+
+        .skills-category strong {
+            color: #222222;
+        }
+
+        .job,
+        .project,
+        .education-item,
+        .award-item {
+            margin-bottom: 15px;
+        }
+
+        .job:last-child,
+        .project:last-child {
+            margin-bottom: 0;
+        }
+
+        .job-header,
+        .project-header,
+        .edu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 5px;
+        }
+
+        .job-title,
+        .project-title,
+        .edu-title {
+            font-size: 15px;
+            font-weight: bold;
+            color: #222222;
+        }
+
+        .job-title em,
+        .edu-title em {
+            font-weight: normal;
+            color: #555555;
+            font-style: italic;
+        }
+
+        .date {
+            font-size: 13px;
+            color: #666666;
+            font-weight: 500;
+        }
+
+        .job ul,
+        .project ul {
+            margin-top: 5px;
+        }
+
+        @media print {
+            body {
+                background-color: #ffffff;
+                padding: 0;
+            }
+
+            .resume-container {
+                box-shadow: none;
+                padding: 0;
+                max-width: 100%;
+            }
+
+            .links a {
+                color: #333333;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="resume-container">
+        <header>
+            <h1>Den Garcia</h1>
+            <div class="contact-info">
+                Manggahan, Pasig, Metro Manila, Philippines &nbsp;|&nbsp; (63) 993 128 9302 &nbsp;|&nbsp;
+                garciaden492@gmail.com
+            </div>
+            <div class="links">
+                <a href="https://github.com/JDen21" target="_blank">GitHub</a>•
+                <a href="https://www.ramvl.art/den-garcia.html" target="_blank">Portfolio</a>•
+                <a href="https://www.linkedin.com/in/den-jhosua-garcia-047395215/" target="_blank">LinkedIn</a>
+            </div>
+        </header>
+
+        <hr>
+
+        <section>
+            <h3>Professional Summary</h3>
+            <p>
+                Versatile Full-Stack Developer and Computer Engineer with a unique blend of core software development
+                and client-facing operational experience. Proven track record in building critical internal software,
+                optimizing server-side systems, and deploying web applications using JavaScript, TypeScript, React, and
+                AWS. A competitive programming champion with strong cross-functional communication and problem-solving
+                skills, adept at bridging the gap between technical execution and business needs.
+            </p>
+        </section>
+
+        <section>
+            <h3>Technical Skills & Competencies</h3>
+            <div class="skills-grid">
+                <div class="skills-category"><strong>Languages:</strong> JavaScript (JS), TypeScript (TS), Rust (Basics)
+                </div>
+                <div class="skills-category"><strong>Frontend:</strong> React, Material UI (MUI), Electron</div>
+                <div class="skills-category"><strong>Backend & Cloud:</strong> Express, Fastify, AWS, CircleCI, Git,
+                    GitHub</div>
+                <div class="skills-category"><strong>Databases & CMS:</strong> MongoDB, MySQL, WordPress, Duda</div>
+            </div>
+            <div class="skills-category" style="margin-top: 10px;">
+                <strong>Core Strengths:</strong> Technical Leadership, Cross-functional Communication, Agile Problem
+                Solving, Open Source Contributions (Published npm packages: <code>dg1</code>,
+                <code>react-three-store</code>)
+            </div>
+        </section>
+
+        <section>
+            <h3>Professional Experience</h3>
+
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Cognizant &mdash; <em>Senior Process Executive</em></span>
+                    <span class="date">2026 – Present</span>
+                </div>
+                <ul>
+                    <li>Execute a specialized hybrid role combining high-level BPO process management with custom web
+                        development solutions.</li>
+                    <li>Leverage full-stack development skills to streamline workflow operations while managing critical
+                        stakeholder communication.</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Kooapps Philippines &mdash; <em>Junior Developer</em></span>
+                    <span class="date">2022 – 2025</span>
+                </div>
+                <ul>
+                    <li>Contributed to and maintained critical internal software architecture, including <strong>Phoenix
+                            Cloud</strong> and <strong>Helpchatter</strong>, directly optimizing core company
+                        operations.</li>
+                    <li>Collaborated actively within the server team to manage critical systems, backend logic, and
+                        automated workflows.</li>
+                    <li>Developed and deployed optimized mini-sites and WordPress integrations, including
+                        <strong>Spellyword</strong> and <strong>Snake.io</strong> blogs.</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Dashlabs.ai &mdash; <em>Customer Service / Tech Support</em></span>
+                    <span class="date">2021 – 2021</span>
+                </div>
+                <ul>
+                    <li>Served as the primary technical point of contact on the client success team, troubleshooting
+                        high-priority online queries and platform bottlenecks.</li>
+                    <li>Wrote custom database scripts that were used internally to extract, filter, and analyze data,
+                        significantly reducing manual response times for complex client issues.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h3>Key Projects</h3>
+
+            <div class="project">
+                <div class="project-header">
+                    <span class="project-title">Accident Monitoring System (Thesis)</span>
+                </div>
+                <p>Conceptualized and built an end-to-end IoT hardware device integrated with a web application for
+                    real-time accident tracking and emergency alerts.</p>
+            </div>
+
+            <div class="project">
+                <div class="project-header">
+                    <span class="project-title">Jobsprobe</span>
+                </div>
+                <p>Developed a high-performance job search platform featuring heavily optimized backend search queries
+                    and responsive UI layout.</p>
+            </div>
+
+            <div class="project">
+                <div class="project-header">
+                    <span class="project-title">Canteen Ordering Management System</span>
+                </div>
+                <p>Programmed an automated, end-to-end ordering and order-tracking application to streamline food
+                    service operations.</p>
+            </div>
+        </section>
+
+        <section>
+            <h3>Education</h3>
+            <div class="education-item">
+                <div class="edu-header">
+                    <span class="edu-title">Cagayan State University &mdash; <em>B.S. Computer Engineering</em></span>
+                    <span class="date">July 2018 – July 2022</span>
+                </div>
+                <ul>
+                    <li>Dean’s List Honors (1st Semester, 2021–2022)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h3>Awards & Achievements</h3>
+            <div class="award-item">
+                <ul>
+                    <li><strong>1st Runner-Up</strong> – Java Programming | National ICPEP Convention (2021–2022)</li>
+                    <li><strong>Champion</strong> – Java Programming | Regional ICPEP Convention (2021–2022)</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+</body>
+
+</html>
