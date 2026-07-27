@@ -10,9 +10,9 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -31,164 +31,357 @@
             }
         }
     </script>
+    <style>
+        #canvas-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        /* --- Scroll Animation Classes --- */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1), transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+
+        .reveal-active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+    </style>
 </head>
 
 <body class="bg-brandDark text-gray-100 font-sans antialiased selection:bg-brandRed selection:text-white">
 
     <!-- Navigation -->
-    <header class="sticky top-0 z-50 bg-brandCard/50 backdrop-blur-md border-b-2 border-brandRed">
-        <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
-            <div class="font-montserrat text-xl font-800 uppercase tracking-wider text-gray-100">
+    <header class="sticky top-0 z-50 bg-brandDark/80 backdrop-blur-md border-b border-gray-800/60 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between relative">
+            <div class="font-montserrat text-xl font-[800] uppercase tracking-wider text-gray-100 z-50">
                 A. Garcia <span class="text-brandRed">Family</span>
             </div>
-            <nav class="space-x-8">
-                <a href="den-garcia.html"
-                    class="text-sm font-500 text-gray-400 hover:text-brandDark transition-colors duration-300">Den
-                    Garcia</a>
-                <a href="kris-garcia.html"
-                    class="text-sm font-500 text-gray-400 hover:text-brandRed transition-colors duration-300">Kris
-                    Garcia</a>
-                <a href="#viel"
-                    class="text-sm font-500 text-gray-400 hover:text-brandBlue transition-colors duration-300">Viel
-                    Garcia</a>
+            
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="den-garcia.html" class="text-sm font-[500] text-gray-400 hover:text-white transition-colors duration-300">Den Garcia</a>
+                <a href="kris-garcia.html" class="text-sm font-[500] text-gray-400 hover:text-brandRed transition-colors duration-300">Kris Garcia</a>
+                <a href="#viel" class="text-sm font-[500] text-gray-400 hover:text-brandBlue transition-colors duration-300">Viel Garcia</a>
             </nav>
+
+            <!-- Mobile Hamburger Button -->
+            <button id="menu-btn" class="block md:hidden text-gray-400 hover:text-white focus:outline-none z-50" aria-label="Toggle Menu">
+                <svg id="hamburger-icon" class="w-6 h-6 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+
+            <!-- Mobile Dropdown Menu -->
+            <div id="mobile-menu" class="absolute top-full left-0 w-full bg-brandDark/95 backdrop-blur-lg border-b border-gray-800/80 flex flex-col space-y-4 px-6 py-6 transition-all duration-300 transform -translate-y-10 opacity-0 pointer-events-none md:hidden">
+                <a href="den-garcia.html" class="text-base font-[500] text-gray-300 hover:text-white transition-colors">Den Garcia</a>
+                <a href="kris-garcia.html" class="text-base font-[500] text-gray-300 hover:text-brandRed transition-colors">Kris Garcia</a>
+                <a href="#viel" class="text-base font-[500] text-gray-300 hover:text-brandBlue transition-colors">Viel Garcia</a>
+            </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section
-        class="relative bg-gradient-to-br from-brandDark via-brandDark to-indigo-950 pt-24 pb-20 border-b border-gray-800">
-        <div class="max-w-6xl mx-auto px-6 text-center">
-            <h1 class="font-montserrat text-4xl md:text-5xl font-800 text-gray-100 tracking-tight mb-6">
-                Welcome to Our <span class="text-brandBlue">Memorabilia</span>
-            </h1>
-            <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-12">
-                A digital living room dedicated to our milestones, raw lessons, and documented journey.
-            </p>
-
-            <!-- Family Image Placeholder -->
-            <!-- <div class="w-full max-w-4xl h-[400px] mx-auto bg-brandCard border-3 border-gray-800 border-b-6 border-b-brandRed rounded-lg flex flex-col items-center justify-center text-gray-600 shadow-2xl overflow-hidden">
-                <svg class="w-12 h-12 mb-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                </svg>
-                <span class="font-montserrat font-600 text-sm tracking-wide">
-                    [ Family Image Placement ]
-                </span>
-            </div>     -->
-            <img src="Hero.webp" alt="A. Garcia Family"
-                class="mt-2 rounded-lg shadow-md object-cover w-full max-w-4xl h-[660px] mx-auto bg-brandCard border-3 border-gray-800 border-b-6 border-b-brandRed rounded-lg flex  flex-col items-center justify-center text-gray-600 shadow-2xl ">
+    <section class="relative min-h-[95vh] flex items-center justify-center overflow-hidden bg-brandDark pt-16 pb-20">
+        <div id="canvas-container"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-7xl h-[600px] bg-gradient-to-tr from-brandRed/5 via-brandBlue/5 to-transparent blur-3xl pointer-events-none rounded-full z-0"></div>
+        
+        <div class="max-w-5xl mx-auto px-6 relative z-10 w-full flex items-center justify-center">
+            <div class="relative w-full rounded-2xl overflow-hidden border border-gray-800/80 shadow-2xl bg-brandCard aspect-[4/5] sm:aspect-[16/10] md:h-[680px]">
+                
+                <!-- Hero Image at Full Opacity -->
+                <img src="Hero.webp" alt="A. Garcia Family" class="absolute inset-0 w-full h-full object-cover opacity-100 filter brightness-[0.9] contrast-[1.02]" />
+                
+                <!-- Overlay disappearing smoothly from bottom to top -->
+                <div class="absolute inset-0 bg-gradient-to-t from-brandDark/100 via-brandDark/70 via-brandDark/30 to-transparent"></div>
+                
+                <!-- Centered Bottom Verbiage Container -->
+                <div class="absolute inset-x-0 bottom-0 p-8 sm:p-12 md:p-16 flex flex-col justify-end items-center text-center max-w-3xl mx-auto space-y-5">
+                    <span class="reveal-up text-xs font-mono uppercase tracking-widest text-brandBlue bg-brandBlue/10 px-3 py-1 rounded-full backdrop-blur-md border border-brandBlue/20">
+                        Digital Living Room
+                    </span>
+                    <h1 class="reveal-up delay-100 font-montserrat text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-[800] text-gray-100 tracking-tight leading-tight drop-shadow-sm">
+                        Welcome to Our <span class="bg-clip-text text-transparent bg-gradient-to-r from-brandBlue to-indigo-400">Memorabilia</span>
+                    </h1>
+                    <p class="reveal-up delay-200 text-sm sm:text-base text-gray-200 font-[400] leading-relaxed max-w-xl drop-shadow-md">
+                        A digital safehouse dedicated to our milestones, raw lessons, and documented journey. Pull up a chair and explore.
+                    </p>
+                    <div class="reveal-up delay-300 pt-2">
+                        <a href="#about-us" class="inline-flex items-center gap-2 text-xs font-[600] tracking-wider uppercase text-white bg-brandRed hover:bg-brandRed/90 px-5 py-3 rounded-lg shadow-lg hover:shadow-brandRed/20 transition-all duration-300 transform hover:-translate-y-0.5">
+                            Read Our Story
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
+
+    <!-- Divider -->
+    <div class="h-24 bg-gradient-to-b from-brandDark/40 to-brandDark border-b border-gray-900"></div>
 
     <!-- About Us Section -->
-    <section class="py-20">
+    <section id="about-us" class="py-24 relative bg-brandDark">
         <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
-            <div class="md:col-span-5">
-                <h2
-                    class="font-montserrat text-3xl font-700 text-gray-100 mb-6 relative after:content-[''] after:block after:w-12 after:h-1 after:bg-brandRed after:mt-3">
+            <div class="md:col-span-5 text-center md:text-left reveal-up">
+                <h2 class="font-montserrat text-3xl font-[700] text-gray-100 mb-6 flex flex-col items-center md:items-start gap-3">
                     About Us
+                    <span class="w-12 h-1 bg-brandRed rounded-full"></span>
                 </h2>
-                <p class="text-gray-300 leading-relaxed text-[16px]">
-                    Hey there! Grab a seat and welcome to our family memorabilia page. If you’re looking for a sterile
-                    corporate portfolio or a perfectly filtered feed, you might be in the wrong corner of the internet.
-                    This space is our digital living room—a collective scrapbook of our lives, our thoughts, and the
-                    milestones that make us who we are.
+                <p class="text-gray-300 leading-relaxed text-[16px] font-[400]">
+                    Hey there! Grab a seat and welcome to our family memorabilia page. If you’re looking for a sterile corporate portfolio or a perfectly filtered feed, you might be in the wrong corner of the internet. This space is our digital living room—a collective scrapbook of our lives, our thoughts, and the milestones that make us who we are.
                 </p>
             </div>
-            <div class="md:col-span-7 flex justify-center md:justify-end">
-                <!-- <div class="w-full max-w-md h-72 bg-brandCard border-3 border-gray-800 border-b-6 border-b-brandBlue rounded-lg flex flex-col items-center justify-center text-gray-600 shadow-lg">
-                    <svg class="w-12 h-12 mb-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                    </svg>
-                    <span class="font-montserrat font-600 text-sm tracking-wide">[ Candid Moments Grid ]</span>
-                </div> -->
-
-                <img src="about_us.jpg"
-                    class="w-full max-w-md bg-brandCard border-3 border-gray-800 border-b-6 border-b-brandBlue rounded-lg flex flex-col items-center justify-center text-gray-600 shadow-lg" />
+            <div class="md:col-span-7 flex justify-center md:justify-end reveal-up delay-100">
+                <div class="relative group w-full max-w-md">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-brandBlue to-indigo-600 rounded-xl opacity-10 blur-lg"></div>
+                    <img src="about_us.jpg" alt="About Us Grid" class="relative w-full bg-brandCard border border-gray-800 rounded-xl shadow-xl transform group-hover:scale-[1.01] transition-transform duration-500" />
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- What Can You Find Here Section -->
-    <section class="py-20 bg-brandCard">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2
-                class="font-montserrat text-3xl font-700 text-gray-100 mb-6 relative inline-block after:content-[''] after:block after:w-12 after:h-1 after:bg-brandRed after:mt-3 after:mx-auto">
-                What You Can Find Here
-            </h2>
-            <p class="text-gray-300 leading-relaxed text-lg mb-12">
-                We built this page because life moves fast, and we wanted a permanent place to anchor our stories. Here,
-                we share everything from our major public achievements to the small, hard-fought personal victories,
-                alongside the raw lessons we've learned along the way. This isn't about bragging; it’s about gratitude.
-                It’s our way of looking back at where we started, appreciating how much we've grown, and giving you a
-                front-row seat to wherever we’re heading next. We’re glad you’re here for the ride.
-            </p>
+    <!-- Seamless Transition Gradient Wrapper -->
+    <div class="bg-gradient-to-b from-brandDark to-brandCard">
 
-            <!-- Family Image below text -->
-            <!-- <div class="w-full h-[350px] bg-brandDark border-3 border-gray-800 border-b-6 border-b-brandRed rounded-lg flex flex-col items-center justify-center text-gray-600 shadow-xl">
-                <svg class="w-12 h-12 mb-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                <span class="font-montserrat font-600 text-sm tracking-wide">[ A. Garcia Family Landscape Image ]</span>
-            </div> -->
-            <img src="wcyfh.jpg" alt="What You Can Find Here"
-                class="w-full max-w-4xl h-auto mx-auto rounded-lg shadow-md" />
-        </div>
-    </section>
+        <!-- What Can You Find Here Section -->
+        <section class="py-24 border-t border-gray-900">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <div class="reveal-up">
+                    <h2 class="font-montserrat text-3xl font-[700] text-gray-100 mb-6 flex flex-col items-center gap-3">
+                        What You Can Find Here
+                        <span class="w-12 h-1 bg-brandRed rounded-full"></span>
+                    </h2>
+                    <p class="text-gray-300 leading-relaxed text-lg mb-16 font-[400]">
+                        We built this page because life moves fast, and we wanted a permanent place to anchor our stories. Here, we share everything from our major public achievements to the small, hard-fought personal victories, alongside the raw lessons we've learned along the way. This isn't about bragging; it’s about gratitude.
+                    </p>
+                </div>
+
+                <div class="relative rounded-xl overflow-hidden shadow-2xl border border-gray-800 max-w-4xl mx-auto group reveal-up delay-100">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-brandRed to-brandBlue rounded-xl opacity-0 group-hover:opacity-10 blur-xl transition-all duration-700"></div>
+                    <img src="wcyfh.jpg" alt="What You Can Find Here" class="w-full h-auto object-cover relative rounded-xl" />
+                </div>
+            </div>
+        </section>
+
+        <!-- Activities Section -->
+        <section class="py-28 border-t border-gray-900 relative">
+            <div class="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-brandBlue/5 blur-3xl rounded-full pointer-events-none"></div>
+            
+            <div class="max-w-6xl mx-auto px-6 relative z-10">
+                <div class="mb-16 text-center md:text-left reveal-up">
+                    <h2 class="font-montserrat text-3xl font-[700] text-gray-100 mb-3">Activities</h2>
+                    <p class="text-gray-400">Explore our active networks, projects, and structural platforms.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <a href="#link-to-ramnation-page" class="reveal-up delay-100 bg-brandDark/40 backdrop-blur-sm border border-gray-800 hover:border-gray-700 hover:bg-brandCard/60 rounded-xl p-8 transition-all duration-300 group flex flex-col justify-between shadow-lg hover:-translate-y-1">
+                        <div>
+                            <div class="w-12 h-12 bg-gray-900 border border-gray-800 rounded-lg flex items-center justify-center text-gray-400 mb-6 group-hover:border-brandRed group-hover:text-brandRed transition-colors duration-300">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+                                </svg>
+                            </div>
+                            <h3 class="font-montserrat font-[700] text-xl text-white mb-3 transition-colors">
+                                RamNation
+                            </h3>
+                            <p class="text-sm text-gray-400 leading-relaxed font-[400]">
+                                Our very first try on a Family business. It's a fail at the moment but it's a work in progress.
+                            </p>
+                        </div>
+                        <div class="mt-8 text-xs font-[600] text-gray-400 group-hover:text-white flex items-center gap-1 transition-colors duration-300">
+                            Check it out
+                            <svg class="w-3 h-3 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </div>
 
     <!-- Meet The Members Section -->
-    <section class="py-20">
+    <section class="py-28 bg-brandDark border-t border-gray-900">
         <div class="max-w-6xl mx-auto px-6">
-            <h2 class="font-montserrat text-3xl font-700 text-gray-100 text-center mb-4">Meet the Minds</h2>
-            <p class="text-gray-400 text-center max-w-md mx-auto mb-16">
-                Quick access to our individual spaces where we share our specialized fields, deep thoughts, and updates.
-            </p>
+            <div class="reveal-up text-center">
+                <h2 class="font-montserrat text-3xl font-[700] text-gray-100 mb-4">Meet the Minds</h2>
+                <p class="text-gray-400 max-w-md mx-auto mb-16">
+                    Quick access to our individual spaces where we share our specialized fields, deep thoughts, and updates.
+                </p>
+            </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Den -->
-                <div
-                    class="bg-brandDark border-t-4 border-brandBlue rounded-lg p-8 text-center shadow-xl hover:-translate-y-1 transition-transform duration-300">
-                    <div
-                        class="w-20 h-20 rounded-full bg-gray-800 border-2 border-brandBlue mx-auto flex items-center justify-center font-montserrat font-700 text-brandBlue text-2xl mb-4">
+                <a href="den-garcia.html" class="reveal-up delay-100 block bg-brandCard/40 hover:bg-brandCard border border-gray-800/80 hover:border-brandBlue/50 rounded-xl p-8 text-center shadow-xl hover:-translate-y-1.5 transition-all duration-300 group">
+                    <div class="w-20 h-20 rounded-full bg-gray-900 border border-gray-800 group-hover:border-brandBlue mx-auto flex items-center justify-center font-montserrat font-[700] text-brandBlue text-2xl mb-5 transition-colors duration-300">
                         DG
                     </div>
-                    <h3 class="font-montserrat font-600 text-lg text-gray-100 mb-2">Den Garcia</h3>
-                    <p class="text-sm text-gray-400">Space & Memorabilia Hub</p>
-                </div>
+                    <h3 class="font-montserrat font-[600] text-lg text-gray-100 mb-2 group-hover:text-brandBlue transition-colors">Den Garcia</h3>
+                    <p class="text-sm text-gray-400 font-[400]">Space & Memorabilia Hub</p>
+                </a>
 
-                <!-- Kris -->
-                <div
-                    class="bg-brandDark border-t-4 border-brandRed rounded-lg p-8 text-center shadow-xl hover:-translate-y-1 transition-transform duration-300">
-                    <div
-                        class="w-20 h-20 rounded-full bg-gray-800 border-2 border-brandRed mx-auto flex items-center justify-center font-montserrat font-700 text-brandRed text-2xl mb-4">
+                <a href="kris-garcia.html" class="reveal-up delay-200 block bg-brandCard/40 hover:bg-brandCard border border-gray-800/80 hover:border-brandRed/50 rounded-xl p-8 text-center shadow-xl hover:-translate-y-1.5 transition-all duration-300 group">
+                    <div class="w-20 h-20 rounded-full bg-gray-900 border border-gray-800 group-hover:border-brandRed mx-auto flex items-center justify-center font-montserrat font-[700] text-brandRed text-2xl mb-5 transition-colors duration-300">
                         KG
                     </div>
-                    <h3 class="font-montserrat font-600 text-lg text-gray-100 mb-2">Kris Garcia</h3>
-                    <p class="text-sm text-gray-400">Thoughts & Chronicles</p>
-                </div>
+                    <h3 class="font-montserrat font-[600] text-lg text-gray-100 mb-2 group-hover:text-brandRed transition-colors">Kris Garcia</h3>
+                    <p class="text-sm text-gray-400 font-[400]">Thoughts & Chronicles</p>
+                </a>
 
-                <!-- Viel -->
-                <div
-                    class="bg-brandDark border-t-4 border-brandBlue rounded-lg p-8 text-center shadow-xl hover:-translate-y-1 transition-transform duration-300">
-                    <div
-                        class="w-20 h-20 rounded-full bg-gray-800 border-2 border-brandBlue mx-auto flex items-center justify-center font-montserrat font-700 text-brandBlue text-2xl mb-4">
+                <a href="#viel" class="reveal-up delay-300 block bg-brandCard/40 hover:bg-brandCard border border-gray-800/80 hover:border-brandBlue/50 rounded-xl p-8 text-center shadow-xl hover:-translate-y-1.5 transition-all duration-300 group">
+                    <div class="w-20 h-20 rounded-full bg-gray-900 border border-gray-800 group-hover:border-brandBlue mx-auto flex items-center justify-center font-montserrat font-[700] text-brandBlue text-2xl mb-5 transition-colors duration-300">
                         VG
                     </div>
-                    <h3 class="font-montserrat font-600 text-lg text-gray-100 mb-2">Viel Garcia</h3>
-                    <p class="text-sm text-gray-400">Milestones & Growth Track</p>
-                </div>
+                    <h3 class="font-montserrat font-[600] text-lg text-gray-100 mb-2 group-hover:text-brandBlue transition-colors">Viel Garcia</h3>
+                    <p class="text-sm text-gray-400 font-[400]">Milestones & Growth Track</p>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-[#070a12] py-10 border-t border-gray-800 text-center text-sm text-gray-500">
-        <div class="max-w-6xl mx-auto px-6">
+    <footer class="bg-[#060910] py-12 border-t border-gray-900 text-center text-sm text-gray-500">
+        <div class="max-w-6xl mx-auto px-6 space-y-2">
             <p>&copy; 2026 A. Garcia Family Memorabilia. Built with gratitude.</p>
-            <p>&copy; All rights reserved.</p>
+            <p class="text-xs text-gray-600">&copy; All rights reserved.</p>
         </div>
     </footer>
 
+    <!-- Three.js Ambient Particle System -->
+    <script>
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        container.appendChild(renderer.domElement);
+
+        const particlesCount = window.innerWidth < 768 ? 400 : 900;
+        const positions = new Float32Array(particlesCount * 3);
+        const colors = new Float32Array(particlesCount * 3);
+        const colorPalette = [new THREE.Color('#e11d48'), new THREE.Color('#38bdf8'), new THREE.Color('#4f46e5')];
+
+        for(let i = 0; i < particlesCount * 3; i+=3) {
+            positions[i] = (Math.random() - 0.5) * 12;
+            positions[i+1] = (Math.random() - 0.5) * 8;
+            positions[i+2] = (Math.random() - 0.5) * 5;
+            const mixedColor = colorPalette[Math.floor(Math.random() * colorPalette.length)];
+            colors[i] = mixedColor.r;
+            colors[i+1] = mixedColor.g;
+            colors[i+2] = mixedColor.b;
+        }
+
+        const particlesGeometry = new THREE.BufferGeometry();
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+        const particlesMaterial = new THREE.PointsMaterial({
+            size: 0.035,
+            vertexColors: true,
+            transparent: true,
+            opacity: 0.7,
+            blending: THREE.AdditiveBlending
+        });
+
+        const particleMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particleMesh);
+        camera.position.z = 4;
+
+        let mouseX = 0, mouseY = 0;
+        window.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth) - 0.5;
+            mouseY = (e.clientY / window.innerHeight) - 0.5;
+        });
+
+        const clock = new THREE.Clock();
+        const animate = () => {
+            const elapsedTime = clock.getElapsedTime();
+            particleMesh.rotation.y = elapsedTime * 0.04;
+            particleMesh.rotation.x = elapsedTime * 0.02;
+            particleMesh.position.x += (mouseX * 0.5 - particleMesh.position.x) * 0.05;
+            particleMesh.position.y += (-mouseY * 0.5 - particleMesh.position.y) * 0.05;
+            renderer.render(scene, camera);
+            requestAnimationFrame(animate);
+        };
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(container.clientWidth, container.clientHeight);
+        });
+    </script>
+
+    <!-- Interactive Navigation & Scroll Animation Functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Hamburger Mobile Menu Mechanism ---
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const hamburgerIcon = document.getElementById('hamburger-icon');
+
+            menuBtn.addEventListener('click', () => {
+                const isOpen = mobileMenu.classList.contains('opacity-100');
+                
+                if (!isOpen) {
+                    // Open Menu
+                    mobileMenu.classList.remove('opacity-0', 'pointer-events-none', '-translate-y-10');
+                    mobileMenu.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+                    hamburgerIcon.style.transform = 'rotate(90deg)';
+                    hamburgerIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>`;
+                } else {
+                    // Close Menu
+                    mobileMenu.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+                    mobileMenu.classList.add('opacity-0', 'pointer-events-none', '-translate-y-10');
+                    hamburgerIcon.style.transform = 'rotate(0deg)';
+                    hamburgerIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>`;
+                }
+            });
+
+            // Close mobile menu gracefully on click of link
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+                    mobileMenu.classList.add('opacity-0', 'pointer-events-none', '-translate-y-10');
+                    hamburgerIcon.style.transform = 'rotate(0deg)';
+                    hamburgerIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>`;
+                });
+            });
+
+            // --- Scroll Intersection Observer Reveal Engine ---
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.12
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('reveal-active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const elementsToReveal = document.querySelectorAll('.reveal-up');
+            elementsToReveal.forEach(el => observer.observe(el));
+        });
+    </script>
 </body>
 
 </html>
