@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Map | A. Garcia Family</title>
+    <meta name="description" content="Sitemap for the A. Garcia Family website." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        montserrat: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        brandDark: '#0b0f19',
+                        brandCard: '#111827',
+                        brandRed: '#e11d48',
+                        brandBlue: '#38bdf8',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-brandDark text-gray-100 font-sans antialiased selection:bg-brandRed selection:text-white">
+    <header class="sticky top-0 z-50 bg-brandDark/90 backdrop-blur-md border-b border-gray-800/60">
+        <div class="max-w-6xl mx-auto px-6 py-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div class="font-montserrat text-xl font-[800] uppercase tracking-wider text-gray-100">
+                A. Garcia <span class="text-brandRed">Family</span>
+            </div>
+            <nav class="flex flex-wrap gap-4 text-sm font-[500] text-gray-400">
+                <a href="index.html" class="hover:text-white transition-colors duration-300">Home</a>
+                <a href="den-garcia.html" class="hover:text-brandRed transition-colors duration-300">Den Garcia</a>
+                <a href="kris-garcia.html" class="hover:text-brandRed transition-colors duration-300">Kris Garcia</a>
+                <a href="currently.html" class="hover:text-white transition-colors duration-300">Currently</a>
+                <a href="sitemap.html" class="text-white">Sitemap</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 py-16">
+        <div class="bg-brandCard border border-gray-800 rounded-3xl shadow-2xl overflow-hidden">
+            <div class="px-8 py-12">
+                <h1 class="font-montserrat text-4xl font-[800] text-white mb-4">Sitemap</h1>
+                <p class="text-gray-300 text-base max-w-3xl mb-8">
+                    A quick overview of pages and sections available on the A. Garcia Family website.
+                </p>
+
+                <div class="space-y-8">
+                    <section>
+                        <h2 class="font-montserrat text-2xl font-[700] text-white mb-4">Primary Pages</h2>
+                        <ul class="space-y-3 text-gray-300">
+                            <li><a href="index.html" class="hover:text-white transition-colors duration-300">Home</a></li>
+                            <li><a href="den-garcia.html" class="hover:text-white transition-colors duration-300">Den Garcia</a></li>
+                            <li><a href="kris-garcia.html" class="hover:text-white transition-colors duration-300">Kris Garcia</a></li>
+                            <li><a href="currently.html" class="hover:text-white transition-colors duration-300">Currently</a></li>
+                            <li><a href="sitemap.html" class="hover:text-white transition-colors duration-300">Sitemap</a></li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2 class="font-montserrat text-2xl font-[700] text-white mb-4">Notable Sections</h2>
+                        <ul class="space-y-3 text-gray-300">
+                            <li><a href="index.html#about-us" class="hover:text-white transition-colors duration-300">About Us</a></li>
+                            <li><a href="index.html#viel" class="hover:text-white transition-colors duration-300">Viel Garcia</a></li>
+                            <li><a href="index.html#" class="hover:text-white transition-colors duration-300">Featured stories</a></li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Allow standard web access, but explicitly disallow known LLM and scraping agents.
+User-agent: OpenAI
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: BingPreview
+Disallow: /
+
+User-agent: Anthropic
+Disallow: /
+
+# Note: robots.txt is a request for crawler behavior and not a security control.
+# Browsers may still access the site normally; automated LLM crawlers should respect these directives.
