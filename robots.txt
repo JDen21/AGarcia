@@ -1,18 +1,25 @@
 User-agent: *
 Allow: /
 
-# Allow standard web access, but explicitly disallow known LLM and scraping agents.
-User-agent: OpenAI
-Disallow: /
+# Sitemap
+Sitemap: https://www.ramvl.art/sitemap.xml
 
+# Allow AI crawlers to access sitemaps and AI-Prompts pages only
 User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-Web
+User-agent: Anthropic
+User-agent: anthropic-ai
+User-agent: Google-Extended
+User-agent: PerplexityBot
+User-agent: CCBot
+User-agent: cohere-ai
+User-agent: OpenAI
+Allow: /sitemap.xml
+Allow: /sitemap.html
+Allow: /AI-Prompts/
 Disallow: /
 
 User-agent: BingPreview
 Disallow: /
-
-User-agent: Anthropic
-Disallow: /
-
-# Note: robots.txt is a request for crawler behavior and not a security control.
-# Browsers may still access the site normally; automated LLM crawlers should respect these directives.
