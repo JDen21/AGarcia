@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Assistant Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Glassmorphism utility classes - reduced transparency & softer borders */
+        .glass-card {
+            background: rgba(248, 250, 252, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .glass-card-dark {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Parallax fixed background blobs */
+        .parallax-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.3;
+            /* Lowered opacity to reduce contrast & glare */
+            will-change: transform;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-100 text-gray-800 antialiased font-sans relative overflow-x-hidden">
+
+    <div class="parallax-bg">
+        <div id="blob1" class="blob w-96 h-96 bg-indigo-400 -top-20 -left-20"></div>
+        <div id="blob2" class="blob w-[30rem] h-[30rem] bg-purple-400 top-1/3 -right-32"></div>
+        <div id="blob3" class="blob w-96 h-96 bg-slate-400 bottom-10 left-10"></div>
+    </div>
+
+    <nav
+        class="fixed top-0 left-0 w-full bg-slate-100/80 backdrop-blur-md border-b border-slate-200/60 shadow-sm z-50 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center relative">
+            <a href="../../den-garcia.html"
+                class="text-xl font-bold text-indigo-600 tracking-wide hover:opacity-90 transition">Den Garcia<span
+                    class="text-gray-400 font-normal">.va</span></a>
+
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-600">
+                <a href="#about" class="hover:text-indigo-600 transition">About</a>
+                <a href="#services" class="hover:text-indigo-600 transition">Services</a>
+                <a href="#portfolio" class="hover:text-indigo-600 transition">Samples</a>
+                <a href="#tools" class="hover:text-indigo-600 transition">Tools</a>
+            </div>
+
+            <div class="hidden md:flex items-center gap-4">
+                <a href="mailto:garciaden492@gmail.com"
+                    class="bg-indigo-600 text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-indigo-700 transition shadow-sm">Hire
+                    Me</a>
+            </div>
+
+            <button id="va-menu-btn"
+                class="block md:hidden text-gray-700 hover:text-indigo-600 focus:outline-none p-2 rounded-lg"
+                aria-label="Toggle Menu" aria-expanded="false">
+                <svg id="va-hamburger-icon" class="w-6 h-6 transition-transform duration-300" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path id="va-hamburger-path" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <div id="va-mobile-menu"
+            class="hidden md:hidden bg-slate-100/90 backdrop-blur-md border-b border-gray-200 px-6 py-5 space-y-3 shadow-lg transition-all duration-300">
+            <a href="#about" class="va-nav-link block text-gray-700 hover:text-indigo-600 font-medium py-1">About</a>
+            <a href="#services"
+                class="va-nav-link block text-gray-700 hover:text-indigo-600 font-medium py-1">Services</a>
+            <a href="#portfolio"
+                class="va-nav-link block text-gray-700 hover:text-indigo-600 font-medium py-1">Portfolio</a>
+            <a href="#tools" class="va-nav-link block text-gray-700 hover:text-indigo-600 font-medium py-1">Tools</a>
+            <a href="#contact"
+                class="va-nav-link block text-center bg-indigo-600 text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-indigo-700 transition shadow-sm mt-2">Hire
+                Me</a>
+        </div>
+    </nav>
+
+    <section
+        class="pt-32 pb-20 md:pt-40 md:pb-28 max-w-6xl mx-auto px-6 text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-12">
+        <div class="md:w-1/2 space-y-6">
+            <span
+                class="inline-block px-3 py-1 bg-indigo-100 text-indigo-800 text-xs font-semibold rounded-full uppercase tracking-wider border border-indigo-200">Landing
+                Page, Graphics & Cold Calling</span>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+                Let People Know Your Business.
+            </h1>
+            <p class="text-lg text-gray-600">
+                I help busy entrepreneurs and small business owners build and maintain an online presence. Edit graphics
+                for social posts. And call potential clients.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 pt-2 justify-center md:justify-start">
+                <a href="mailto:garciaden492@gmail.com"
+                    class="bg-indigo-600 text-white px-6 py-3 rounded-lg text-center font-semibold hover:bg-indigo-700 transition shadow-md">Hire
+                    Me</a>
+                <a href="#portfolio"
+                    class="glass-card text-gray-700 px-6 py-3 rounded-lg text-center font-semibold hover:bg-slate-200/80 transition shadow-sm">View
+                    Sample Work</a>
+            </div>
+        </div>
+        <div class="md:w-5/12 flex justify-center">
+            <div
+                class="w-64 h-64 md:w-80 md:h-80 rounded-2xl glass-card flex items-center justify-center border border-slate-300/60 shadow-xl overflow-hidden relative">
+                <img src="../../denLN.jpg" alt="Den Photo" />
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="glass-card p-10 rounded-2xl shadow-sm text-center space-y-6">
+                <h2 class="text-3xl font-bold text-gray-900">Hi, I'm Den</h2>
+                <p class="text-lg text-gray-600 leading-relaxed">
+                    I am a technical freelancer whose sole mission is to show your business to more people out
+                    there and connecting you to potential clients. Need a new website? I can build professional,
+                    user-friendly websites that are optimized for search engines and designed to convert
+                    visitors into customers. A poster for your post? I got you. How about an experienced outbound
+                    caller? I can help you connect with potential clients.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-20 max-w-6xl mx-auto px-6">
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+            <h2 class="text-3xl font-bold text-gray-900">Core Services</h2>
+            <p class="text-gray-600">Tailored visibility and support for your business.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="glass-card p-8 rounded-xl shadow-sm hover:shadow-md transition space-y-4">
+                <div
+                    class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center text-xl">
+                    <i class="fa-solid fa-envelope-open-text"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900">Website Management</h3>
+                <ul class="text-gray-600 text-sm space-y-2">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-500 text-xs"></i> Build
+                        Landing Page From Scratch</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-500 text-xs"></i>
+                        Website Maintenance</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-500 text-xs"></i>
+                        SEO/AEO Optimization </li>
+                </ul>
+            </div>
+
+            <div class="glass-card p-8 rounded-xl shadow-sm hover:shadow-md transition space-y-4">
+                <div
+                    class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center text-xl">
+                    <i class="fa-solid fa-share-nodes"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900">Social Media Assistance</h3>
+                <ul class="text-gray-600 text-sm space-y-2">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-500 text-xs"></i>
+                        Content Scheduling & Publishing</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-500 text-xs"></i> Basic
+                        Graphic Design (Canva)</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-500 text-xs"></i>
+                        Community Management & Replies</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-500 text-xs"></i>
+                        Hashtag & Competitor Research</li>
+                </ul>
+            </div>
+
+            <div class="glass-card p-8 rounded-xl shadow-sm hover:shadow-md transition space-y-4">
+                <div
+                    class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center text-xl">
+                    <i class="fa-solid fa-headset"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900">Customer & Web Support</h3>
+                <ul class="text-gray-600 text-sm space-y-2">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-500 text-xs"></i> Email
+                        & Live Chat Support</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-500 text-xs"></i> Basic
+                        Cold Calling</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-500 text-xs"></i>
+                        Customer Feedback Tracking</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="py-20">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+                <h2 class="text-3xl font-bold text-gray-900">Sample Projects</h2>
+                <p class="text-gray-600">Demonstrated work samples showcasing creative design, web development, and
+                    branding.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <div
+                    class="glass-card rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between">
+                    <div class="p-6 space-y-4 flex-grow flex flex-col">
+                        <div>
+                            <span
+                                class="inline-block px-2.5 py-1 rounded-full text-xs font-semibold text-indigo-700 bg-indigo-100 uppercase tracking-wider mb-2">Canva
+                                Designs</span>
+                            <h3 class="text-xl font-bold text-gray-900">Marketing Posts & Logos</h3>
+                            <p class="text-xs text-gray-500 mt-1">Branded social media content and vector logo assets.
+                            </p>
+                        </div>
+
+                        <div
+                            class="relative w-full aspect-[4/5] rounded-xl overflow-hidden bg-slate-200/50 border border-slate-300/80 shadow-inner mt-2 flex-grow">
+                            <iframe loading="lazy" class="w-full h-full absolute inset-0 border-0"
+                                src="https://www.canva.com/design/DAHR12TAhrE/EzWkC8rrV8FVNCtH04KJYw/view?embed"
+                                allowfullscreen="allowfullscreen" allow="fullscreen">
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <div class="px-6 pb-6 pt-2">
+                        <a href="https://www.canva.com/design/DAHR12TAhrE/EzWkC8rrV8FVNCtH04KJYw/view?utm_content=DAHR12TAhrE&utm_campaign=designshare&utm_medium=embeds&utm_source=link"
+                            target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center justify-center w-full gap-2 px-4 py-2.5 rounded-lg text-xs font-semibold text-indigo-600 bg-indigo-100/70 hover:bg-indigo-200/70 transition-colors">
+                            <span>Open on Canva</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div
+                    class="glass-card rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between">
+                    <div class="p-6 space-y-4 flex-grow flex flex-col">
+                        <div>
+                            <span
+                                class="inline-block px-2.5 py-1 rounded-full text-xs font-semibold text-indigo-700 bg-indigo-100 uppercase tracking-wider mb-2">Websites</span>
+                            <h3 class="text-xl font-bold text-gray-900">Portfolios & Websites</h3>
+                            <p class="text-xs text-gray-500 mt-1">Interactive personal and brand landing page.</p>
+                        </div>
+
+                        <div
+                            class="relative w-full aspect-[4/5] rounded-xl overflow-hidden glass-card-dark shadow-inner mt-2 flex-grow flex flex-col">
+                            <div
+                                class="bg-gray-950 px-3 py-2 border-b border-gray-800 flex items-center gap-1.5 flex-shrink-0">
+                                <div class="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
+                                <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
+                                <div class="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
+                                <span
+                                    class="text-[10px] text-gray-400 ml-2 font-mono truncate">ramvl.art/den-garcia.html</span>
+                            </div>
+                            <div class="relative flex-grow w-full">
+                                <iframe loading="lazy" class="w-full h-full absolute inset-0 border-0"
+                                    src="https://www.ramvl.art/den-garcia.html">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="px-6 pb-6 pt-2">
+                        <a href="https://www.ramvl.art/den-garcia.html" target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center justify-center w-full gap-2 px-4 py-2.5 rounded-lg text-xs font-semibold text-indigo-600 bg-indigo-100/70 hover:bg-indigo-200/70 transition-colors">
+                            <span>Visit Live Site</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div
+                    class="glass-card rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between">
+                    <div class="p-6 space-y-4 flex-grow flex flex-col">
+                        <div>
+                            <span
+                                class="inline-block px-2.5 py-1 rounded-full text-xs font-semibold text-indigo-700 bg-indigo-100 uppercase tracking-wider mb-2">Canva
+                                Designs</span>
+                            <h3 class="text-xl font-bold text-gray-900">Email Signatures</h3>
+                            <p class="text-xs text-gray-500 mt-1">Professional email signatures and digital branding
+                                cards.</p>
+                        </div>
+
+                        <div
+                            class="relative w-full aspect-[4/5] rounded-xl overflow-hidden bg-slate-200/50 border border-slate-300/80 shadow-inner mt-2 flex-grow flex items-center justify-center p-3">
+                            <div class="relative w-full aspect-[2/1] rounded-lg overflow-hidden shadow-sm">
+                                <iframe loading="lazy" class="w-full h-full absolute inset-0 border-0"
+                                    src="https://www.canva.com/design/DAHTKI-quzs/cn3Byuc54i1jutlYMbxBog/view?embed"
+                                    allowfullscreen="allowfullscreen" allow="fullscreen">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="px-6 pb-6 pt-2">
+                        <a href="https://www.canva.com/design/DAHTKI-quzs/cn3Byuc54i1jutlYMbxBog/view?utm_content=DAHTKI-quzs&utm_campaign=designshare&utm_medium=embeds&utm_source=link"
+                            target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center justify-center w-full gap-2 px-4 py-2.5 rounded-lg text-xs font-semibold text-indigo-600 bg-indigo-100/70 hover:bg-indigo-200/70 transition-colors">
+                            <span>Open on Canva</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="tools" class="py-16 max-w-6xl mx-auto px-6">
+        <div class="text-center mb-10">
+            <h2 class="text-2xl font-bold text-gray-900">Tools & Platforms I Use</h2>
+        </div>
+        <div class="flex flex-wrap justify-center gap-4 sm:gap-6 text-gray-700 font-medium">
+            <span class="glass-card px-5 py-2.5 rounded-xl shadow-sm hover:shadow transition flex items-center gap-2.5">
+                <i class="fa-solid fa-palette text-cyan-600"></i> Canva
+            </span>
+            <span class="glass-card px-5 py-2.5 rounded-xl shadow-sm hover:shadow transition flex items-center gap-2.5">
+                <i class="fa-solid fa-building-user text-teal-600"></i> AppFolio
+            </span>
+            <span class="glass-card px-5 py-2.5 rounded-xl shadow-sm hover:shadow transition flex items-center gap-2.5">
+                <i class="fa-brands fa-salesforce text-sky-600 text-lg"></i> Salesforce
+            </span>
+            <span class="glass-card px-5 py-2.5 rounded-xl shadow-sm hover:shadow transition flex items-center gap-2.5">
+                <i class="fa-solid fa-comments text-indigo-600"></i> Intercom
+            </span>
+            <span class="glass-card px-5 py-2.5 rounded-xl shadow-sm hover:shadow transition flex items-center gap-2.5">
+                <i class="fa-solid fa-laptop-code text-rose-600"></i> Duda
+            </span>
+            <span class="glass-card px-5 py-2.5 rounded-xl shadow-sm hover:shadow transition flex items-center gap-2.5">
+                <i class="fa-brands fa-wordpress text-blue-700 text-lg"></i> WordPress
+            </span>
+            <span class="glass-card px-5 py-2.5 rounded-xl shadow-sm hover:shadow transition flex items-center gap-2.5">
+                <i class="fa-solid fa-wand-magic-sparkles text-purple-600"></i> Gemini
+            </span>
+        </div>
+    </section>
+
+    <footer class="py-8 bg-slate-900 backdrop-blur-md text-gray-400 text-center text-sm border-t border-slate-800">
+        <p>&copy; 2026 Virtual Assistant Portfolio. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Parallax Effect on Scroll
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const blob1 = document.getElementById('blob1');
+            const blob2 = document.getElementById('blob2');
+            const blob3 = document.getElementById('blob3');
+
+            if (blob1 && blob2 && blob3) {
+                blob1.style.transform = `translateY(${scrollY * 0.2}px) translateX(${scrollY * 0.05}px)`;
+                blob2.style.transform = `translateY(${-scrollY * 0.15}px)`;
+                blob3.style.transform = `translateY(${scrollY * 0.1}px) translateX(${-scrollY * 0.08}px)`;
+            }
+        });
+
+        // Mobile Navigation Toggle
+        const vaMenuBtn = document.getElementById('va-menu-btn');
+        const vaMobileMenu = document.getElementById('va-mobile-menu');
+        const vaHamburgerPath = document.getElementById('va-hamburger-path');
+        const vaNavLinks = document.querySelectorAll('.va-nav-link');
+
+        if (vaMenuBtn && vaMobileMenu) {
+            vaMenuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isHidden = vaMobileMenu.classList.contains('hidden');
+                if (isHidden) {
+                    vaMobileMenu.classList.remove('hidden');
+                    vaMenuBtn.setAttribute('aria-expanded', 'true');
+                    if (vaHamburgerPath) {
+                        vaHamburgerPath.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+                    }
+                } else {
+                    vaMobileMenu.classList.add('hidden');
+                    vaMenuBtn.setAttribute('aria-expanded', 'false');
+                    if (vaHamburgerPath) {
+                        vaHamburgerPath.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+                    }
+                }
+            });
+
+            // Close on link click
+            vaNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    vaMobileMenu.classList.add('hidden');
+                    vaMenuBtn.setAttribute('aria-expanded', 'false');
+                    if (vaHamburgerPath) {
+                        vaHamburgerPath.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+                    }
+                });
+            });
+
+            // Close when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!vaMenuBtn.contains(e.target) && !vaMobileMenu.contains(e.target)) {
+                    vaMobileMenu.classList.add('hidden');
+                    vaMenuBtn.setAttribute('aria-expanded', 'false');
+                    if (vaHamburgerPath) {
+                        vaHamburgerPath.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
